@@ -25,7 +25,7 @@ module.exports = function(sequelize, DataTypes) {
 				model: 'Department',
 				key: 'id'
 			},
-			field: 'Department_id'
+			field: 'departmentId'
 		}
 	}, {
 		tableName: 'Department_course'
