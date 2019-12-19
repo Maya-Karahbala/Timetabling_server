@@ -1,5 +1,6 @@
 module.exports = async () => {
   const Sequelize = require("sequelize");
+  
  
 };
 
