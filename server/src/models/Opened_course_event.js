@@ -1,3 +1,4 @@
+/* jshint indent: 1 */
 
 module.exports = function(sequelize, DataTypes) {
 	return sequelize.define('OpenedCourseEvent', {
@@ -42,8 +43,18 @@ module.exports = function(sequelize, DataTypes) {
 				key: 'id'
 			},
 			field: 'Opened_course_id'
+		},
+		timetableId: {
+			type: DataTypes.INTEGER(11),
+			allowNull: false,
+			references: {
+				model: 'Timetable',
+				key: 'id'
+			},
+			field: 'timetable_id'
 		}
 	}, {
-		tableName: 'Opened_course_event'
+		tableName: 'Opened_course_event',
+		timestamps: false
 	});
 };

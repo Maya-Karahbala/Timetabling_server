@@ -1,7 +1,7 @@
 /* jshint indent: 1 */
 
 module.exports = function(sequelize, DataTypes) {
-	return sequelize.define('Semester', {
+	return sequelize.define('Timetable', {
 		id: {
 			type: DataTypes.INTEGER(11),
 			allowNull: false,
@@ -9,23 +9,32 @@ module.exports = function(sequelize, DataTypes) {
 			autoIncrement: true,
 			field: 'id'
 		},
-		semesterType: {
+		semesterId: {
+			type: DataTypes.INTEGER(11),
+			allowNull: false,
+			references: {
+				model: 'Semester',
+				key: 'id'
+			},
+			field: 'semester_id'
+		},
+		timetableType: {
 			type: DataTypes.STRING(45),
 			allowNull: false,
-			field: 'semester_type'
+			field: 'timetable_type'
 		},
 		beginning: {
-			type: DataTypes.STRING(45),
+			type: DataTypes.DATEONLY,
 			allowNull: true,
 			field: 'beginning'
 		},
 		ending: {
-			type: DataTypes.STRING(45),
+			type: DataTypes.DATEONLY,
 			allowNull: true,
 			field: 'ending'
 		}
 	}, {
-		tableName: 'Semester',
+		tableName: 'Timetable',
 		timestamps: false
 	});
 };
