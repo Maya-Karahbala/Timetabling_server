@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `test4` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `test4`;
 -- MySQL dump 10.13  Distrib 5.7.27, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: test4
@@ -31,6 +29,8 @@ CREATE TABLE `Department_course` (
   `lab_duration` int(11) NOT NULL,
   `teori_duration` int(11) NOT NULL,
   `semester_no` int(11) NOT NULL,
+  `classroom_type` varchar(45) DEFAULT NULL,
+  `event_type` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_Department_course_Course_idx` (`course_id`),
   KEY `fk_Department_course_Department1_idx` (`Department_id`),
@@ -45,7 +45,7 @@ CREATE TABLE `Department_course` (
 
 LOCK TABLES `Department_course` WRITE;
 /*!40000 ALTER TABLE `Department_course` DISABLE KEYS */;
-INSERT INTO `Department_course` VALUES (1,1,1,120,180,2),(2,2,1,120,180,4),(3,3,1,120,180,4),(4,3,2,120,180,4),(5,4,1,120,180,1),(6,5,1,120,180,8),(7,6,1,120,180,8),(8,2,2,120,180,4);
+INSERT INTO `Department_course` VALUES (1,1,1,120,180,2,'computer lab','Lab'),(2,2,1,120,180,4,NULL,NULL),(3,3,1,120,180,4,NULL,NULL),(4,3,2,120,180,4,NULL,NULL),(5,4,1,120,180,1,'computer lab','All'),(6,5,1,120,180,8,NULL,NULL),(7,6,1,120,180,8,NULL,NULL),(8,2,2,120,180,4,NULL,NULL);
 /*!40000 ALTER TABLE `Department_course` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-19 19:56:54
+-- Dump completed on 2020-05-08 16:51:13

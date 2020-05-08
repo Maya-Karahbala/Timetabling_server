@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `test4` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `test4`;
 -- MySQL dump 10.13  Distrib 5.7.27, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: test4
@@ -33,7 +31,7 @@ CREATE TABLE `Event_classroom` (
   KEY `fk_Event_classroom_2_idx` (`Classroom_id`),
   CONSTRAINT `fk_Event_classroom_1` FOREIGN KEY (`Event_id`) REFERENCES `Opened_course_event` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_Event_classroom_2` FOREIGN KEY (`Classroom_id`) REFERENCES `Classroom` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=850 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1334 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +40,7 @@ CREATE TABLE `Event_classroom` (
 
 LOCK TABLES `Event_classroom` WRITE;
 /*!40000 ALTER TABLE `Event_classroom` DISABLE KEYS */;
-INSERT INTO `Event_classroom` VALUES (2,397,837),(4,393,838),(4,399,839),(3,396,840),(4,394,841),(5,398,842),(3,395,843),(5,400,846),(3,401,847),(2,403,848),(5,402,849);
+INSERT INTO `Event_classroom` VALUES (1,552,1289),(1,555,1292),(1,557,1294),(1,558,1295),(1,559,1296),(1,563,1300),(1,572,1309),(4,553,1310),(4,567,1312),(4,566,1314),(4,565,1315),(2,571,1323),(4,568,1324),(4,556,1325),(3,561,1326),(1,569,1327),(1,562,1328),(1,560,1329),(1,551,1330),(1,554,1331),(5,564,1332),(2,570,1333);
 /*!40000 ALTER TABLE `Event_classroom` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-19 19:56:54
+-- Dump completed on 2020-05-08 16:51:13

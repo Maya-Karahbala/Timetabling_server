@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `test4` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `test4`;
 -- MySQL dump 10.13  Distrib 5.7.27, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: test4
@@ -35,7 +33,7 @@ CREATE TABLE `Classroom` (
   UNIQUE KEY `code_UNIQUE` (`code`),
   KEY `fk_Classroom_Department1_idx` (`Department_id`),
   CONSTRAINT `fk_Classroom_Department1` FOREIGN KEY (`Department_id`) REFERENCES `Department` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +42,7 @@ CREATE TABLE `Classroom` (
 
 LOCK TABLES `Classroom` WRITE;
 /*!40000 ALTER TABLE `Classroom` DISABLE KEYS */;
-INSERT INTO `Classroom` VALUES (1,'AMFI','A103','Haliç',100,1),(2,'AMFI','D111','Haliç',100,1),(3,'AMFI','D105','Haliç',100,1),(4,'lab','B121','Haliç',45,1),(5,'AMFI','A102','Haliç',100,2),(6,'AMFI','A104','Haliç',100,2);
+INSERT INTO `Classroom` VALUES (1,'amphitheater','A103','Haliç',200,1),(2,'amphitheater','D111','Haliç',100,1),(3,'amphitheater','D105','Haliç',100,1),(4,'computer lab','B121','Haliç',45,1),(5,'amphitheater','A102','Haliç',100,2),(6,'computer lab','A104','Haliç',100,2),(7,'electric lab','B122','Haliç',20,1);
 /*!40000 ALTER TABLE `Classroom` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-19 19:56:54
+-- Dump completed on 2020-05-08 16:51:13

@@ -10,10 +10,10 @@ module.exports = function(sequelize, DataTypes) {
 			autoIncrement: true,
 			field: 'id'
 		},
-		ClassroomType: {
+		classroomType: {
 			type: DataTypes.STRING(45),
 			allowNull: true,
-			field: 'Classroom_type'
+			field: 'classroom_type'
 		},
 		code: {
 			type: DataTypes.STRING(45),

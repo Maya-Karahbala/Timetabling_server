@@ -56,6 +56,7 @@ const Department_User = require("./src/models/Department_User")(
   Sequelize
 );
 const Timetable = require("./src/models/Timetable")(sequelize, Sequelize);
+const Teacher_restriction = require("./src/models/Teacher_restriction")(sequelize, Sequelize);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // sequelize model relations
 Department.hasMany(Classroom, {
@@ -219,7 +220,15 @@ Department_User.belongsTo(User, {
   as: "User",
   foreignKey: "userId"
 });
-
+// teacher has many teacher restrictions
+Teacher.hasMany(Teacher_restriction, {
+  as: "Teacher_restrictions",
+  foreignKey: "teacherId"
+});
+Teacher_restriction.belongsTo(Teacher, {
+  as: "Teacher",
+  foreignKey: "teacherId"
+});
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // servises
@@ -275,8 +284,27 @@ app.get("/teachers",(req,res)=>{
 
 }
 )*/
-  app.get("/teachers/:depid?", (req, res) => {
-    Department.findByPk(req.params.depid, { order: [ ['id', 'DESC'] ], include: ["Teachers"] })
+  app.get("/teachers/:semesterid?/:depid?", (req, res) => {
+    //include: ["Users"]
+    Department.findByPk(req.params.depid, 
+      { 
+      //
+      include: [
+        {
+          model: Teacher,
+          as: "Teachers",
+          order: [ ['id', 'DESC'] ], 
+          
+          include: [
+            {
+              model: Teacher_restriction,
+              required: false,
+              as: "Teacher_restrictions",
+              where: { semesterId: req.params.semesterid }
+            }
+          ]}]
+      //
+    })
       .then(department => {
         res.send(department.get().Teachers);
       })
@@ -388,6 +416,7 @@ app.put("/updatecourses", async function(req, res,next) {
   });
   
   */
+
  app.put("/updatecourses", async function(req, res,next) {
   //const t= await sequelize.transaction()
 
@@ -439,11 +468,34 @@ app.put("/updatecourses", async function(req, res,next) {
     
         
   });
+  //----------------------------
+  /*
+  app.put("/updateOrCreateTeacherRestrictions", async function(req, res) {
+    console.log("update",req.body)
+    Teacher_restriction.upsert(req.body).then(function (test) {
+      if(test){
+          res.status(200);
+          res.send("Successfully stored");
+      }else{
+          res.status(200);
+          res.send("Successfully inserted");
+      }
+  })
+  })*/
+
+//-------------------------------
+// creat if not exists and delet if it has been removed
+app.post("/updateTeacherRestrictions", (req, res) => {
+  console.log("req.body", req.body);
+  Teacher_restriction.destroy({ where: { id: req.body.deletedIdes }}).then(()=>{
+    Teacher_restriction.bulkCreate(req.body.data).then(r=>res.send(r))
+   
+    
+  })
+
   
   
-
-
-
+});
 /* 
 app.put("/updatecourses", function(req, res) {
   req.body.map(data => {

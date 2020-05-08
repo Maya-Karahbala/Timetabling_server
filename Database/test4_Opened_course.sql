@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `test4` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `test4`;
 -- MySQL dump 10.13  Distrib 5.7.27, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: test4
@@ -33,7 +31,7 @@ CREATE TABLE `Opened_course` (
   KEY `fk_Opened_course_Department_course1_idx` (`Department_course_id`),
   CONSTRAINT `fk_Opened_course_Department_course1` FOREIGN KEY (`Department_course_id`) REFERENCES `Department_course` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Opened_course_Semester1` FOREIGN KEY (`Semester_id`) REFERENCES `Semester` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=242 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=275 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +40,7 @@ CREATE TABLE `Opened_course` (
 
 LOCK TABLES `Opened_course` WRITE;
 /*!40000 ALTER TABLE `Opened_course` DISABLE KEYS */;
-INSERT INTO `Opened_course` VALUES (238,29,1),(239,29,3),(240,29,6),(241,29,7);
+INSERT INTO `Opened_course` VALUES (269,34,1),(270,34,2),(271,34,3),(272,34,5),(273,34,6),(274,34,7);
 /*!40000 ALTER TABLE `Opened_course` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-19 19:56:54
+-- Dump completed on 2020-05-08 16:51:13

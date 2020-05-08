@@ -42,6 +42,16 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false,
 			field: 'lab_duration'
 		},
+		classroomType: {
+			type: DataTypes.STRING(45),
+			allowNull: true,
+			field: 'Classroom_type'
+		},
+		eventType: {
+			type: DataTypes.STRING(45),
+			allowNull: true,
+			field: 'event_type'
+		},
 	}, {
 		tableName: 'Department_course'
 	});

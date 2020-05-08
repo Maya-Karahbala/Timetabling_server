@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `test4` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `test4`;
 -- MySQL dump 10.13  Distrib 5.7.27, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: test4
@@ -33,7 +31,7 @@ CREATE TABLE `Timetable` (
   PRIMARY KEY (`id`),
   KEY `fk_Timetable_1_idx` (`semester_id`),
   CONSTRAINT `fk_Timetable_1` FOREIGN KEY (`semester_id`) REFERENCES `Semester` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=115 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +40,7 @@ CREATE TABLE `Timetable` (
 
 LOCK TABLES `Timetable` WRITE;
 /*!40000 ALTER TABLE `Timetable` DISABLE KEYS */;
-INSERT INTO `Timetable` VALUES (113,29,'Ders','2020-01-05','2020-04-17'),(114,29,'Vize','2020-03-01','2020-03-05');
+INSERT INTO `Timetable` VALUES (121,34,'Ders','2020-01-08','2020-05-08');
 /*!40000 ALTER TABLE `Timetable` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-19 19:56:54
+-- Dump completed on 2020-05-08 16:51:13

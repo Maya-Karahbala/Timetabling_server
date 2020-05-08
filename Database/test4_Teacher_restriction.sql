@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `test4` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `test4`;
 -- MySQL dump 10.13  Distrib 5.7.27, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: test4
@@ -26,17 +24,16 @@ DROP TABLE IF EXISTS `Teacher_restriction`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Teacher_restriction` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `day` varchar(45) DEFAULT NULL,
-  `beginning_hour` varchar(45) DEFAULT NULL,
-  `ending_hour` varchar(45) DEFAULT NULL,
+  `starting_hour` datetime DEFAULT NULL,
+  `duration` int(11) DEFAULT NULL,
   `Teacher_id` int(11) NOT NULL,
   `Semester_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_Teacher_restriction_Teacher1_idx` (`Teacher_id`),
   KEY `fk_Teacher_restriction_Semester1_idx` (`Semester_id`),
-  CONSTRAINT `fk_Teacher_restriction_Semester1` FOREIGN KEY (`Semester_id`) REFERENCES `Semester` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Teacher_restriction_Teacher1` FOREIGN KEY (`Teacher_id`) REFERENCES `Teacher` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  CONSTRAINT `fk_Teacher_restriction_Semester1` FOREIGN KEY (`Semester_id`) REFERENCES `Semester` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_Teacher_restriction_Teacher1` FOREIGN KEY (`Teacher_id`) REFERENCES `Teacher` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=137 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,6 +42,7 @@ CREATE TABLE `Teacher_restriction` (
 
 LOCK TABLES `Teacher_restriction` WRITE;
 /*!40000 ALTER TABLE `Teacher_restriction` DISABLE KEYS */;
+INSERT INTO `Teacher_restriction` VALUES (130,'2020-01-13 06:00:00',600,1,34),(131,'2020-01-14 06:00:00',600,2,34),(132,'2020-01-15 06:00:00',600,3,34),(133,'2020-01-13 06:00:00',600,4,34),(134,'2020-01-16 06:00:00',600,4,34),(135,'2020-01-17 06:00:00',600,5,34),(136,'2020-01-17 06:00:00',600,6,34);
 /*!40000 ALTER TABLE `Teacher_restriction` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-19 19:56:54
+-- Dump completed on 2020-05-08 16:51:13
