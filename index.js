@@ -270,13 +270,15 @@ app.get("/classrooms/:depid?", (req, res) => {
   Classroom.findAll(
     
     {
-      order: [ ['id', 'DESC'] ],
+      order: [ ['id', 'DESC'], ['departmentId', 'DESC']  ],
+    
+      
     raw: true
   })
     .then(u => res.send(u))
     .catch(err => console.log("Error : ", err));
-}) /
-  /*
+}) 
+ /*
 app.get("/teachers",(req,res)=>{
   Teacher.findAll({
       raw: true 
@@ -536,7 +538,14 @@ app.get("/openedCoursesEvents/:semesterid?/:depid?", (req, res) => {
   let condition =
     req.params.depid === undefined ? {} : { departmentId: req.params.depid };
   Opened_course_event.findAll({
-    order: [ ['eventDate', 'DESC'] ],
+    order: [
+      
+        
+     
+       
+    
+       ['id', 'ASC'],
+       ],
  
     attributes: [
       "id",
@@ -597,7 +606,7 @@ app.get("/openedCoursesEvents/:semesterid?/:depid?", (req, res) => {
     })
     .catch(err => console.log("Error while searching dep : ", err));
 });
-app.get("/departments", (req, res) => {
+app.get("/departments/:temp?", (req, res) => {
   Department.findAll({
     raw: true
   }).then(u => res.send(u));
@@ -657,7 +666,16 @@ app.post("/addEvent", (req, res) => {
     "req.body***********************************************",
     req.body
   );
-  Opened_course_event.create(req.body.courseEvent)
+  Opened_course_event.create(req.body.courseEvent,
+    {
+      include: [{
+        model: Event_teacher,
+        as: 'Event_teachers'
+      },{
+        model: Event_classroom,
+        as: 'Event_classrooms'
+      }]
+    })
     .then(courseEvent => {
       console.log(courseEvent.dataValues);
       res.send(courseEvent.dataValues);
@@ -698,6 +716,17 @@ app.post("/addEventTeacher", (req, res) => {
 
 app.get("/deleteSemester/:id?", (req, res) => {
   Semester.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(() => {
+      res.send();
+    })
+    .catch(err => console.log("Error : ", err));
+});
+app.get("/deleteEvent/:id?", (req, res) => {
+  Opened_course_event.destroy({
     where: {
       id: req.params.id
     }
